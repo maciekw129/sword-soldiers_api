@@ -1,0 +1,32 @@
+﻿# Build Results
+bin/
+obj/
+*.log
+*.cache
+
+# User-Specific Files
+.vscode/
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+
+# Dotnet Publish Outputs
+wwwroot/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Secrets and Keys
+secrets.json
+*.env
+.env
+
+# Dependency directories
+node_modules/
