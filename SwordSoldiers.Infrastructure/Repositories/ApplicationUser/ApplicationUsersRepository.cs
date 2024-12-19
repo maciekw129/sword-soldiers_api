@@ -37,6 +37,9 @@ namespace SwordSoldiers.Infrastructure.Repositories
             }
 
             applicationUser.Name = updatedApplicationUser.Name;
+            applicationUser.Character = updatedApplicationUser.Character;
+            applicationUser.Gender = updatedApplicationUser.Gender;
+            
             await _applicationDbContext.SaveChangesAsync();
 
             return applicationUser;

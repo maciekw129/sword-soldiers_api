@@ -30,7 +30,9 @@ namespace SwordSoldiers.Api.Users
         {
             return new ApplicationUser()
             {
-                Name = updateApplicationUserDto.Name
+                Name = updateApplicationUserDto.Name,
+                Gender = updateApplicationUserDto.Gender,
+                Character = updateApplicationUserDto.Character
             };
         }
     }
