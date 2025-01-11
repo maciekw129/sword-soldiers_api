@@ -42,6 +42,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 
 builder.Services.AddScoped<IApplicationUsersRepository, ApplicationUsersRepository>();
+builder.Services.AddScoped<IGameMapRepository, GameMapRepository>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -53,6 +54,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true
     };
 });
+
+builder.Services.AddAuthorizationBuilder()
+    .AddPolicy("CreateGameMaps", policy => policy.RequireClaim("permissions", "create:game-maps"));
 
 var app = builder.Build();
 

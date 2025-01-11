@@ -45,7 +45,7 @@ namespace SwordSoldiers.Api.Users
             return Ok(updatedUser);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetUserById([FromRoute] Guid id)
         {
             var user = await _applicationUsersRepository.GetByIdAsync(id);
