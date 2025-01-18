@@ -15,9 +15,8 @@ namespace SwordSoldiers.Infrastructure
             modelBuilder.Entity<GameMap>()
                 .Property(e => e.Data)
                 .HasConversion(
-                    v => v == null ? null : JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
-                    v => (v == null ? null : JsonDocument.Parse(v, default(JsonDocumentOptions)))!
-                );
+                    v => JsonSerializer.Serialize(v, (JsonSerializerOptions)null),
+                    v => JsonSerializer.Deserialize<object>(v, (JsonSerializerOptions)null));
         }
     }
 }

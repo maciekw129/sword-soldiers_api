@@ -11,7 +11,7 @@ public class CreateGameMapDto
     public string Title { get; set; }
     
     [Required]
-    public JsonDocument Data { get; set; }
+    public object Data { get; set; }
     
     [Required]
     public Difficulty Difficulty { get; set; }
