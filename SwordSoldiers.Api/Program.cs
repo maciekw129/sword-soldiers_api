@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using SwordSoldiers.Api.Middlewares;
+using SwordSoldiers.Api.Resources.ImageUpload;
 using SwordSoldiers.Infrastructure;
 using SwordSoldiers.Infrastructure.Repositories;
 
@@ -41,8 +42,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
+builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
 builder.Services.AddScoped<IApplicationUsersRepository, ApplicationUsersRepository>();
 builder.Services.AddScoped<IGameMapRepository, GameMapRepository>();
+
+builder.Services.AddHttpClient();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
