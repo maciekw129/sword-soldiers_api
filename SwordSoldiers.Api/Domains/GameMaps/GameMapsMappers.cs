@@ -13,6 +13,7 @@ public static class GameMapsMappers
             Title = gameMap.Title,
             Data = gameMap.Data,
             Difficulty = gameMap.Difficulty,
+            ImageUrl = gameMap.ImageUrl,
         };
     }
 
@@ -23,7 +24,19 @@ public static class GameMapsMappers
             Title = createGameMapDto.Title,
             Data = createGameMapDto.Data,
             Difficulty = createGameMapDto.Difficulty,
-            EnemyRate = createGameMapDto.EnemyRate
+            EnemyRate = createGameMapDto.EnemyRate,
+            ImageUrl = createGameMapDto.ImageUrl,
+        };
+    }
+
+    public static GameMapListItemDto GameMapToGameMapListItemDto(this GameMap gameMap)
+    {
+        return new GameMapListItemDto()
+        {
+            Id = gameMap.Id,
+            Title = gameMap.Title,
+            Difficulty = gameMap.Difficulty,
+            ImageUrl = gameMap.ImageUrl,
         };
     }
 }

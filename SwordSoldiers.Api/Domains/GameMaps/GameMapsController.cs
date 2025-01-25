@@ -9,19 +9,19 @@ namespace SwordSoldiers.Api.Domains.GameMaps;
 [ApiController]
 public class GameMapsController(IGameMapRepository gameMapRepository): ControllerBase
 {
-    private readonly IGameMapRepository _gameMapRepository = gameMapRepository;
-    
     [HttpGet()]
     [Authorize()]
     public async Task<IActionResult> GetAllGameMaps()
     {
-        return Ok(await _gameMapRepository.GetAllAsync());
+        var gameMaps = await gameMapRepository.GetAllAsync();
+        
+        return Ok(gameMaps.Select(gameMap => gameMap.GameMapToGameMapListItemDto()).ToList());
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetGameMapById([FromRoute] Guid id)
     {
-        var gameMap = await _gameMapRepository.GetByIdAsync(id);
+        var gameMap = await gameMapRepository.GetByIdAsync(id);
 
         if (gameMap == null)
         {
@@ -36,7 +36,7 @@ public class GameMapsController(IGameMapRepository gameMapRepository): Controlle
     public async Task<IActionResult> CreateGameMap([FromBody] CreateGameMapDto createGameMapDto)
     {
         var newGameMap = createGameMapDto.CreateGameMapDtoToGameMap();
-        var createdGameMap = await _gameMapRepository.CreateAsync(newGameMap);
+        var createdGameMap = await gameMapRepository.CreateAsync(newGameMap);
         
         return CreatedAtAction(nameof(GetGameMapById), new { id = createdGameMap.Id }, createdGameMap);
     }
@@ -45,7 +45,7 @@ public class GameMapsController(IGameMapRepository gameMapRepository): Controlle
     [Authorize(Policy = "CreateGameMaps")]
     public async Task<IActionResult> DeleteGameMap([FromRoute] Guid id)
     {
-        var gameMap = await _gameMapRepository.DeleteAsync(id);
+        var gameMap = await gameMapRepository.DeleteAsync(id);
 
         if (gameMap == null)
         {

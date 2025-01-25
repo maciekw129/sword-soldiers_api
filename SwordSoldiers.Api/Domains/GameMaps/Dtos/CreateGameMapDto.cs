@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json;
 using SwordSoldiers.Domain.Enums;
 
 namespace SwordSoldiers.Api.Domains.GameMaps.Dtos;
@@ -18,4 +17,7 @@ public class CreateGameMapDto
     
     [Required]
     public int EnemyRate { get; set; }
+    
+    [Required]
+    public string ImageUrl { get; set; }
 }
