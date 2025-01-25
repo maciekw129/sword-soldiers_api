@@ -19,6 +19,6 @@ public class ImageUploadController(IImageUploadService imageUploadService) : Con
         var imageData = await imageUploadService.GetImageAsByteArray(image);
         var response = await imageUploadService.UploadImageAsync(imageData, image.FileName);
 
-        return Ok(response.ImgBbResponseDtoToImageUploadResponseDto());
+        return Ok(response.ImgBbResponseDtoToUploadedImageDto());
     }
 }

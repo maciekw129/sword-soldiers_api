@@ -2,13 +2,14 @@
 
 public static class ImageUploadMappers
 {
-    public static ImageUploadResponseDto ImgBbResponseDtoToImageUploadResponseDto(this ImgBbResponseDto imgBbResponseDto)
+    public static UploadedImageDto ImgBbResponseDtoToUploadedImageDto(this ImgBbResponseDto imgBbResponseDto)
     {
-        return new ImageUploadResponseDto()
+        return new UploadedImageDto()
         {
             FileName = imgBbResponseDto.Data.Image.Filename,
             Extension = imgBbResponseDto.Data.Image.Extension,
-            Url = imgBbResponseDto.Data.Image.Url
+            Url = imgBbResponseDto.Data.Image.Url,
+            Size = imgBbResponseDto.Data.Size,
         };
     }
 }
