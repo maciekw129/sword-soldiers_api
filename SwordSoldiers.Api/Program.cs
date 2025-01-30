@@ -45,6 +45,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<IImageUploadService, ImageUploadService>();
 builder.Services.AddScoped<IApplicationUsersRepository, ApplicationUsersRepository>();
 builder.Services.AddScoped<IGameMapRepository, GameMapRepository>();
+builder.Services.AddScoped<IGameRepository, GameRepository>();
 
 builder.Services.AddHttpClient();
 

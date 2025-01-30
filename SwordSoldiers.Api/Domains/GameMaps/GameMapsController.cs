@@ -54,4 +54,17 @@ public class GameMapsController(IGameMapRepository gameMapRepository): Controlle
         
         return NoContent();
     }
+
+    [HttpGet("data/{id:guid}")]
+    public async Task<IActionResult> GetGameMapData([FromRoute] Guid id)
+    {
+        var gameMap = await gameMapRepository.GetByIdAsync(id);
+
+        if (gameMap == null)
+        {
+            return NotFound();
+        }
+        
+        return Ok(gameMap.Data);
+    }
 }
